@@ -2,7 +2,17 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  base: 'https://sariyanta.github.io/tailwindcomponents/',
-  plugins: [vue()],
-})
+export default defineConfig(({ command }) => {
+
+  if (command === 'build') {
+    return {
+      base: '/tailwindcomponents/',
+      plugins: [vue()],
+    } 
+  } else {
+    return {
+      plugins: [vue()],
+    }
+  }
+  
+});
